@@ -1,0 +1,31 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+env/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore log files
+*.log
+
+# Ignore compiled files
+*.o
+*.so
+*.out
+*.mp4
+
+# Ignore archives
+*.zip
+*.tar.gz
+*.tgz
+*.sh 
+
+# Ignore ollama tar file
+ollama-linux-amd64.tgz
+
