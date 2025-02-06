@@ -29,3 +29,10 @@ env/
 # Ignore ollama tar file
 ollama-linux-amd64.tgz
 
+# Ignore folders
+/batch_scripts 
+/datasets
+/environment_setup
+/old_scripts
+/vids
+/wandb
