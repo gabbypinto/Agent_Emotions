@@ -37,9 +37,12 @@ class LLMModel:
         else:
             raise ValueError(f"Unsupported model: {model}")
     
+    # @trace #this will track execution inside LangSmith
     def run_chain(self, prompt: PromptTemplate, input_vars: Dict) -> str:
         input_vars["persona"] = self.persona  # Inject persona into prompt
         llm_chain = LLMChain(llm=self.llm, prompt=prompt)
+
+
         return llm_chain.run(**input_vars).strip()
 
 
@@ -154,7 +157,7 @@ class VideoAnalyzer:
         self.video_processor = VideoProcessor()
         self.dataset_handler = DatasetHandler()
         self.question_generator = QuestionGenerator(self.llm_model)
-        self.memory = []  # 🧠 Store past analyses
+        self.memory = []  #Store past analyses
 
         self.pre_event_prompt = PromptTemplate(
             template="""
@@ -197,7 +200,7 @@ class VideoAnalyzer:
         else:
             raise ValueError("Either a video file path or a dataset sample must be provided.")
 
-        # 🧠 Store analysis in memory
+        # Store analysis in memory
         self.memory.append(analysis)
         return analysis
 

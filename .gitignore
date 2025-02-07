@@ -36,3 +36,7 @@ ollama-linux-amd64.tgz
 /old_scripts
 /vids
 /wandb
+
+
+# Ignore csv file (sensitive/private data)
+*.csv
