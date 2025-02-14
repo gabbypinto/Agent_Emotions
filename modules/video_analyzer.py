@@ -1,23 +1,24 @@
-import json
-from modules.llm_model import LLMModel
 from modules.video_processor import VideoProcessor
-from modules.dataset_handler import DatasetHandler
-from modules.question_generator import QuestionGenerator
-
 
 class VideoAnalyzer:
-    def __init__(self, model: str = "ollama", google_api_key=None, persona: str = "default"):
-        self.llm_model = LLMModel(model, google_api_key, persona)
+    def __init__(self):
+        """
+        Initialize VideoAnalyzer with VideoProcessor.
+        """
         self.video_processor = VideoProcessor()
-        self.dataset_handler = DatasetHandler()
-        self.question_generator = QuestionGenerator(self.llm_model)
-        self.memory = []
 
-    def analyze_video(self, dataset_sample):
+    def analyze_video(self, video_path: str):
+        """
+        Extract a frame from the video and analyze it.
+        """
+        frame = self.video_processor.extract_frame(video_path)
+        frame_analysis = self.video_processor.analyze_frame(frame)
+
         analysis = {
-            "image_path": dataset_sample["image_path"],
-            "decision": dataset_sample["decision"],
-            "harmfulType": dataset_sample["harmfulType"],
+            "video_path": video_path,
+            "frame_analysis": frame_analysis,
         }
-        self.memory.append(analysis)
         return analysis
+
+
+   
